@@ -4,7 +4,7 @@ import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import cyberGray from "../assets/cyber-gray.jpg"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
 const CustomInput = (props: any) => {
@@ -37,13 +37,13 @@ const Login = () => {
                 initialValues={{ username: "", password: "" }}
                 onSubmit={async (values, actions) => {
                     try {
-                        const response = await axios.post(`http://${window.location.hostname}:3001/login`, values, {
+                        const response = await axios.post(`https://api-gray-hub.loca.lt/login`, values, {
                             headers: {
                                 'Authorization': `Basic ${btoa("admin:password")}`
                             },
                         });
                         Cookies.set("access_token", response.data.access_token, {
-                            expires: 24
+                            expires: 1 / 24
                         })
                         navigate("/account")
                         setResponseError(null); // Clear any previous errors
@@ -102,6 +102,7 @@ const Login = () => {
                         >
                             Log in
                         </Button>
+                        <Link className="text-center text-primary font-bold" to={"/account"}>Go to account</Link>
                     </Form>
                 )}
             </Formik>
