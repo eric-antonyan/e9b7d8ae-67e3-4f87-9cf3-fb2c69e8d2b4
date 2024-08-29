@@ -3,8 +3,18 @@ import { jwtDecode } from 'jwt-decode';
 import Cookies from 'js-cookie';
 import { DataList, Text } from '@radix-ui/themes';
 import cyberGray from '../assets/cyber-gray.jpg';
+import generalityJPG from '../assets/generality.jpg';
 import { Button } from '@nextui-org/react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
+import post1 from "../assets/photo_2024-08-29_11-41-41.jpg"
+import post2 from "../assets/photo_2024-08-29_11-41-43.jpg"
+import post3 from "../assets/photo_2024-08-29_11-41-44.jpg"
+import post4 from "../assets/photo_2024-08-29_11-41-46.jpg"
+import post5 from "../assets/photo_2024-08-29_11-41-48.jpg"
+import post6 from "../assets/photo_2024-08-29_11-41-50.jpg"
+import post7 from "../assets/photo_2024-08-29_11-41-53.jpg"
+import post8 from "../assets/photo_2024-08-29_13-05-04.jpg"
+import post9 from "../assets/photo_2024-08-29_13-05-08.jpg"
 import axios from 'axios';
 
 const Account = () => {
@@ -17,7 +27,7 @@ const Account = () => {
         const token = Cookies.get('access_token');
         if (!token) {
             const fetchUser = async () => {
-                const response = await axios.get("https://api-gray-hub.onrender.com/user", {
+                const response = await axios.get(`http://${window.location.hostname}:3001/user`, {
                     headers: {
                         Authorization: `Basic ${btoa("admin:password")}`
                     }
@@ -49,43 +59,68 @@ const Account = () => {
         return <Navigate to="/login" />;
     }
 
+    const posts = [
+        {
+            img: post1
+        },
+        {
+            img: post2
+        },
+        {
+            img: post3
+        },
+        {
+            img: post4
+        },
+        {
+            img: post5
+        },
+        {
+            img: post6
+        },
+        {
+            img: post7
+        },
+        {
+            img: post8
+        },
+        {
+            img: post9
+        }
+    ]
+
     return (
         <div className="dark text-foreground bg-background h-full pb-6">
             {data ? (
                 <div>
                     <header className="p-3 bg-slate-900 sticky top-0">
                         <div className="max-w-[1120px] mx-auto flex items-center px-2 justify-between">
-                            <div className='font-bold flex items-center gap-2'>Gray<div className='bg-orange-500 text-black px-2 py-1 rounded'>HUB</div></div>
+                            <div className='font-bold flex items-center gap-2'>Gray<div className='bg-orange-500 text-black px-2 py-1 rounded text-white'>HUB</div></div>
                             {isLoggedIn && <Button onClick={handleLogout} color="danger">Log out</Button>}
                         </div>
                     </header>
-                    <DataList.Root style={{ rowGap: '30px', columnGap: '15px' }} className="mt-20 p-3 max-w-[1120px] mx-auto">
-                        <DataList.Item align="start">
-                            <DataList.Label minWidth="88px">Username</DataList.Label>
-                            <DataList.Value>
-                                <Text as="span">{data.username}</Text>
-                            </DataList.Value>
-                        </DataList.Item>
-                        <DataList.Item align="start">
-                            <DataList.Label minWidth="88px">Age</DataList.Label>
-                            <DataList.Value>
-                                <Text as="span">{data.age}</Text>
-                            </DataList.Value>
-                        </DataList.Item>
-                        <DataList.Item align="start">
-                            <DataList.Label minWidth="88px">Description</DataList.Label>
-                            <DataList.Value>
-                                <Text as="span">{data.bio}</Text>
-                            </DataList.Value>
-                        </DataList.Item>
-                        <DataList.Item align="start">
-                            <DataList.Label minWidth="88px">Image</DataList.Label>
-                            <DataList.Value>
-                                <img src={"https://i0.wp.com/www.itphoto.co.uk/wp-content/uploads/2018/02/1737-09-sized.jpg"} alt="" />
-                            </DataList.Value>
-                        </DataList.Item>
-                    </DataList.Root>
-                    <footer className='max-w-[1120px] mt-6 w-[100%] flex justify-between mx-auto'>
+                    <div className='p-3 max-w-[1120px] mt-8 w-[100%] mx-auto'>
+                        <div className="flex gap-5">
+                            <img className='w-[150px] h-[150px] phone:w-[90px] phone:h-[90px] rounded-full' src={generalityJPG} alt="" />
+                            <div className='flex font-bold phone:gap-4 mt-3 flex-col gap-3'>
+                                <p className='text-2xl phone:text-xl'>{data.username}</p>
+                                <p className="text-2xl phone:text-xl">{data.firstName} {data.lastName}, {data.age}</p>
+                                <p className='phone:hidden'>{data.bio}</p>
+                            </div>
+                        </div>
+                        <p className='mt-4 font-bold desktop:hidden phone:text-sm'>{data.bio}</p>
+                    </div>
+                    <div className="max-w-[1120px] mx-auto px-3 mt-6 text-center">
+                        <h2 className='font-bold text-4xl'>Posts</h2>
+                        <div className='border-1 border-white mt-8 grid grid-cols-3'>
+                            {
+                                posts.map((post) => (
+                                    <img src={post.img} className='aspect-square object-cover border-1 border-white' alt="" />
+                                ))
+                            }
+                        </div>
+                    </div>
+                    <footer className='max-w-[1120px] mt-6 p-3 w-[100%] flex justify-between mx-auto'>
                         <img className='w-[20px] rounded-full' src={cyberGray} alt="" />
                         <p className='font-bold'>&copy; GrayHUB 2024</p>
                         {

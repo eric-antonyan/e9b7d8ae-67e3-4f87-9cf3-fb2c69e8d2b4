@@ -37,7 +37,7 @@ const Login = () => {
                 initialValues={{ username: "", password: "" }}
                 onSubmit={async (values, actions) => {
                     try {
-                        const response = await axios.post(`https://api-gray-hub.onrender.com/login`, values, {
+                        const response = await axios.post(`http://${window.location.hostname}:3001/login`, values, {
                             headers: {
                                 'Authorization': `Basic ${btoa("admin:password")}`
                             },
@@ -46,10 +46,10 @@ const Login = () => {
                             expires: 1 / 24
                         })
                         navigate("/account")
-                        setResponseError(null); // Clear any previous errors
+                        setResponseError(null);
                     } catch (error: any) {
                         setResponseError(error.response ? error.response.data : "An error occurred");
-                        setResponseData(null); // Clear any previous data
+                        setResponseData(null);
                     }
                     actions.setSubmitting(false);
                 }}
@@ -58,7 +58,7 @@ const Login = () => {
                     <Form className="max-w-[500px] px-4 mx-auto flex flex-col gap-4 pt-4">
                         <div className="flex justify-center items-center gap-4">
                             <p className="text-3xl font-bold">Gray</p>
-                            <div className="bg-orange-500 py-1 px-3 text-3xl rounded-xl font-bold text-black">Hub</div>
+                            <div className="bg-orange-500 py-1 px-3 text-3xl rounded-xl font-bold text-white">Hub</div>
                         </div>
                         <h1 className="text-3xl font-bold text-center">Login To System</h1>
 
