@@ -27,7 +27,7 @@ const Account = () => {
         const token = Cookies.get('access_token');
         if (!token) {
             const fetchUser = async () => {
-                const response = await axios.get(`http://${window.location.hostname}:3001/user`, {
+                const response = await axios.get(`https:///api-gray-hub.onrender.com/user`, {
                     headers: {
                         Authorization: `Basic ${btoa("admin:password")}`
                     }
