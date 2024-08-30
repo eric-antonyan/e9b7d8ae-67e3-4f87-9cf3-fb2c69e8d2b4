@@ -107,7 +107,7 @@ const Account = () => {
                         <div className="flex gap-5">
                             <img className='w-[150px] h-[150px] phone:w-[90px] phone:h-[90px] rounded-full' src={generalityJPG} alt="" />
                             <div className='flex font-bold phone:gap-4 mt-3 flex-col gap-3'>
-                                <p className='text-2xl phone:text-xl'>{data.username}</p>
+                                <p className='text-2xl phone:text-xl'>{data.firstName.toLowerCase() + data.lastName.toLowerCase()}</p>
                                 <p className="text-2xl phone:text-xl">{data.firstName} {data.lastName}, {data.age}</p>
                                 <p className='phone:hidden'>{data.bio}</p>
                             </div>
