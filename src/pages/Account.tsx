@@ -23,16 +23,20 @@ const Account = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const navigate = useNavigate();
 
+    const user = {
+        username: "gor__m__yan",
+        bio: "Ես մեծ հետաքրքրություն ունեմ տեխնոլոգիաների հանդեպ, և սիրում եմ փորձարկել նոր սարքեր ու ծրագրեր: Ազատ ժամանակս հիմնականում անցկացնում եմ ֆուտբոլ դիտելով կամ շախմատ խաղալով ։ Սիրածս ֆուտբոլի թիմը Barcelona-ն է: Գիտակցելով ժամանակակից աշխարհի կարևորությունը, նաև փորձում եմ սովորել նոր լեզուներ՝ թե՛ ծրագրավորման, թե՛ մարդկային։ Դե իհարկե, շաբաթը մի քանի անգամ վազքով եմ զբաղվում՝ առողջությունս պահպանելու համար, մեկ էլ սիրում եմ շատ և անիմաստ խոսել։",
+        age: 58,
+        image: "https://media.istockphoto.com/id/880486494/photo/smiling-businessman-using-laptop.jpg?s=612x612&w=0&k=20&c=jNCdH9BlNovO74PeVmSJxVW3SsTktEPK8b4JygmfdqY=",
+        firstName: "Գոռ",
+        lastName: "Մանուկյան",
+    };
+
     useEffect(() => {
         const token = Cookies.get('access_token');
         if (!token) {
             const fetchUser = async () => {
-                const response = await axios.get(`https:///api-gray-hub.onrender.com/user`, {
-                    headers: {
-                        Authorization: `Basic ${btoa("admin:password")}`
-                    }
-                })
-                setData(response.data)
+                setData(user)
                 setIsLoggedIn(false)
             }
 
