@@ -15,7 +15,6 @@ import post6 from "../assets/photo_2024-08-29_11-41-50.jpg"
 import post7 from "../assets/photo_2024-08-29_11-41-53.jpg"
 import post8 from "../assets/photo_2024-08-29_13-05-04.jpg"
 import post9 from "../assets/photo_2024-08-29_13-05-08.jpg"
-import axios from 'axios';
 
 const Account = () => {
     const [data, setData] = useState<any>();
@@ -24,7 +23,7 @@ const Account = () => {
     const navigate = useNavigate();
 
     const user = {
-        username: "gor__m__yan",
+        username: "gor_manukyan",
         bio: "Ես մեծ հետաքրքրություն ունեմ տեխնոլոգիաների հանդեպ, և սիրում եմ փորձարկել նոր սարքեր ու ծրագրեր: Ազատ ժամանակս հիմնականում անցկացնում եմ ֆուտբոլ դիտելով կամ շախմատ խաղալով ։ Սիրածս ֆուտբոլի թիմը Barcelona-ն է: Գիտակցելով ժամանակակից աշխարհի կարևորությունը, նաև փորձում եմ սովորել նոր լեզուներ՝ թե՛ ծրագրավորման, թե՛ մարդկային։ Դե իհարկե, շաբաթը մի քանի անգամ վազքով եմ զբաղվում՝ առողջությունս պահպանելու համար, մեկ էլ սիրում եմ շատ և անիմաստ խոսել։",
         age: 58,
         image: "https://media.istockphoto.com/id/880486494/photo/smiling-businessman-using-laptop.jpg?s=612x612&w=0&k=20&c=jNCdH9BlNovO74PeVmSJxVW3SsTktEPK8b4JygmfdqY=",
@@ -107,7 +106,7 @@ const Account = () => {
                         <div className="flex gap-5">
                             <img className='w-[150px] h-[150px] phone:w-[90px] phone:h-[90px] rounded-full' src={generalityJPG} alt="" />
                             <div className='flex font-bold phone:gap-4 mt-3 flex-col gap-3'>
-                                <p className='text-2xl phone:text-xl'>{data.firstName.toLowerCase() + "_" + data.lastName.toLowerCase()}</p>
+                                <p className='text-2xl phone:text-xl'>{data.username}</p>
                                 <p className="text-2xl phone:text-xl">{data.firstName} {data.lastName}, {data.age}</p>
                                 <p className='phone:hidden'>{data.bio}</p>
                             </div>
@@ -119,10 +118,18 @@ const Account = () => {
                         <div className='border-1 border-white mt-8 grid grid-cols-3'>
                             {
                                 posts.map((post) => (
-                                    <img src={post.img} className='aspect-square object-cover border-1 border-white' alt="" />
+                                    <img src={post.img} className='aspect-square h-full object-cover border-1 border-white' alt="" />
                                 ))
                             }
                         </div>
+
+                        <p className='mt-5'>
+                            {
+                                isLoggedIn ? (
+                                    <Link to={`https://api-gray-hub.onrender.com/public/assets/files/key/secret/zip`} download={true} className='font-bold text-primary'>download sensitive file</Link>
+                                ) : null
+                            }
+                        </p>
                     </div>
                     <footer className='max-w-[1120px] mt-6 p-3 w-[100%] flex justify-between mx-auto'>
                         <img className='w-[20px] rounded-full' src={cyberGray} alt="" />
