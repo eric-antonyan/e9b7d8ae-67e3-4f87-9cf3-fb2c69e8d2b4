@@ -115,7 +115,7 @@ const Account = () => {
                     </div>
                     <div className="max-w-[1120px] mx-auto px-3 mt-6 text-center">
                         <h2 className='font-bold text-4xl'>Posts</h2>
-                        <div className='border-1 border-white mt-8 grid grid-cols-3'>
+                        <div className='border-1 border-white mt-8 grid grid-cols-3 aspect-square'>
                             {
                                 posts.map((post) => (
                                     <img src={post.img} className='aspect-square h-full object-cover border-1 border-white' alt="" />
