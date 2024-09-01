@@ -7,3 +7,7 @@
 * {
     font-family: "Montserrat", "Noto Sans Armenian";
 }
+
+.aspect-square {
+    aspect-ratio: 1/1;
+}
