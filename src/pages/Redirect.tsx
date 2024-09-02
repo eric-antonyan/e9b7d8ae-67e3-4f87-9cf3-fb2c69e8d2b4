@@ -16,10 +16,9 @@ const Redirect = () => {
     }, []);
     if (shouldRedirect) {
         return <Navigate to="/login" />;
+    } else {
+        return <Navigate to="/account" />
     }
-
-    
-    return <Navigate to="/account" />
 }
 
 export default Redirect
