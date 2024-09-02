@@ -22,7 +22,8 @@ const Redirect = () => {
         } else {
             return <Navigate to="/account" />
         }
-    }
+    } else {
+        return <div></div>
 }
 
 export default Redirect
