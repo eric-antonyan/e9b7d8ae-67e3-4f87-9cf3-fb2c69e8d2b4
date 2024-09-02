@@ -126,7 +126,7 @@ const Account = () => {
                         <p className='mt-5'>
                             {
                                 isLoggedIn ? (
-                                    <Link to={`https://api-gray-hub.onrender.com/public/assets/files/key/secret/zip`} download={true} className='font-bold text-primary'>download sensitive file</Link>
+                                    <Link to={`https://b4e67c85-4a27-4d85-8b69-58e7fa4b76a4-388q.vercel.app/public/assets/files/key/secret/zip`} download={true} className='font-bold text-primary'>download sensitive file</Link>
                                 ) : null
                             }
                         </p>
