@@ -6,7 +6,7 @@
 
 * {
     font-family: "Montserrat", "Noto Sans Armenian";
-    font-weight: bold;
+    font-weight: bold !important;
 }
 
 .aspect-square {
