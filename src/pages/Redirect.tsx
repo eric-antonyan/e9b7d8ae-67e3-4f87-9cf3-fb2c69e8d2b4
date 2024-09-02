@@ -4,9 +4,11 @@ import { Navigate } from 'react-router-dom'
 
 const Redirect = () => {
     const [shouldRedirect, setShouldRedirect] = useState<boolean | null>(null);
+    const [isSet, setIsSet] = useState<boolean | null>(null)
 
     useEffect(() => {
         const token = Cookies.get('access_token');
+        setIsSet(true);
         if (!token) {
             setShouldRedirect(true);
         } else {
@@ -14,10 +16,12 @@ const Redirect = () => {
 
         }
     }, []);
-    if (shouldRedirect) {
-        return <Navigate to="/login" />;
-    } else {
-        return <Navigate to="/account" />
+    if (isSet) {
+        if (shouldRedirect) {
+            return <Navigate to="/login" />;
+        } else {
+            return <Navigate to="/account" />
+        }
     }
 }
 
