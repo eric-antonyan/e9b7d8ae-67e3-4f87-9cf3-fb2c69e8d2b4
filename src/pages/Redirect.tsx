@@ -24,6 +24,7 @@ const Redirect = () => {
         }
     } else {
         return <div></div>
+    }
 }
 
 export default Redirect
